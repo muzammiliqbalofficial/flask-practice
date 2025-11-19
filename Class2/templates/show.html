@@ -1,0 +1,18 @@
+{% extends "index.html"%}
+{% block content %}
+<h1>
+        Student List
+    </h1>
+    <ul>
+    {% for student in data %}
+       <li>{{student.name}}</li>
+       <li>{{student.id}}</li>
+       <li>{{student.grade}}</li>
+       <br>
+       <br>
+    {%endfor %}
+    </ul>
+    <button>
+        <a href="{{url_for('create')}}">Create Student</a>   <!-- fixed: url_for('show') -> create -->
+    </button>
+{% endblock %}
