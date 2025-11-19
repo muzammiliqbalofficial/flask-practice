@@ -1,0 +1,20 @@
+# 1:Install Flask globally (optional but recommended)
+pip install flask   # installs flask package
+
+# 2:Create a Virtual Environment
+python -m venv venv   # creates a virtual environment named 'venv'
+
+# 3:Activate Virtual Environment
+venv\Scripts\activate   # activates the venv on Windows
+
+# 4:Check installed packages
+pip list   # lists all installed packages in venv
+
+# 5: Install Flask inside venv
+pip install flask   # installs Flask in your virtual environment
+
+# 6: Run your Flask App
+python app.py   # starts the Flask development server
+
+# 7: (Optional) Deactivate Virtual Environment
+deactivate   # exits the virtual environment
