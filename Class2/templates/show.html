@@ -1,18 +1,55 @@
 {% extends "index.html"%}
 {% block content %}
-<h1>
-        Student List
-    </h1>
-    <ul>
-    {% for student in data %}
-       <li>{{student.name}}</li>
-       <li>{{student.id}}</li>
-       <li>{{student.grade}}</li>
-       <br>
-       <br>
-    {%endfor %}
-    </ul>
+
+<!-- Agar profile_student hai toh profile dikhaao -->
+{% if profile_student %}
+    <h1>Student Profile</h1>
+    
+    <div style="border: 2px solid #333; padding: 20px; width: 400px; margin-bottom: 20px;">
+        <h2>Full Details</h2>
+        <p><strong>Name:</strong> {{ profile_student.name }}</p>
+        <p><strong>Student ID:</strong> {{ profile_student.id }}</p>
+        <p><strong>Grade:</strong> {{ profile_student.grade }}</p>
+    </div>
+    
     <button>
-        <a href="{{url_for('create')}}">Create Student</a>   <!-- fixed: url_for('show') -> create -->
+        <a href="{{ url_for('index') }}">Back to List</a>
     </button>
+
+<!-- Nahi toh normal list dikhaao -->
+{% else %}
+    <h1>Student List</h1>
+    <h3>Total Students: {{ total }}</h3>
+    
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Grade</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in data %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.id }}</td>
+                <td>{{ student.grade }}</td>
+                <td>
+                    <a href="{{ url_for('profile', student_id=student.id) }}">
+                        <button>View</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <br>
+    <button>
+        <a href="{{url_for('create')}}">Create Student</a>
+    </button>
+{% endif %}
+
 {% endblock %}
