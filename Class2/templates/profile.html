@@ -1,0 +1,16 @@
+{% extends "index.html"%}
+{% block content %}
+<h1>Student Profile</h1>
+
+<div style="border: 2px solid #333; padding: 20px; width: 400px;">
+    <h2>Full Details</h2>
+    <p><strong>Name:</strong> {{ student.name }}</p>
+    <p><strong>Student ID:</strong> {{ student.id }}</p>
+    <p><strong>Grade:</strong> {{ student.grade }}</p>
+</div>
+
+<br>
+<button>
+    <a href="{{ url_for('index') }}">Back to List</a>
+</button>
+{% endblock %}
